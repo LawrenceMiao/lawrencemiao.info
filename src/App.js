@@ -8,6 +8,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           This is lawrence react website
+          IM NOT TRYING TO HACK YOU IM WAITING FOR MY SSL TO GET SIGNED
         </p>
         <a
           className="App-link"
