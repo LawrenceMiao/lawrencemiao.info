@@ -24,21 +24,16 @@ jobs:
     - name: Build the React app
       run: npm run build
 
-    # - name: Authenticate to Google Cloud
-    #   uses: google-github-actions/auth@v1
-    #   with:
-    #     credentials_json: ${{ secrets.GCP_KEY }}
-
     - name: Authenticate to Google Cloud
       uses: 'google-github-actions/auth@v2'
       with:
         project_id: 'lawrencemiao'
         credentials_json: ${{ secrets.GCP_KEY }}
 
-
-
-    - name: Upload to Google Cloud Storage
-      run: |
-        gsutil -m rsync -r build gs://lawrencemiao.info
+    - id: 'upload-folder'
+      uses: 'google-github-actions/upload-cloud-storage@v2'
+      with:
+        path: '/build'
+        destination: 'lawrencemiao.info'
         
 
