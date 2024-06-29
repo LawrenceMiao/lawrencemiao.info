@@ -9,7 +9,6 @@ import {
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { NavLink } from 'react-router-dom'
-import { ReactSVG } from 'react-svg'
 import mountainSrc from './mountain.svg'
 
 const Links = ['Home', 'NoPage', 'Team']
@@ -35,7 +34,11 @@ export default function Simple() {
                     />
                     <HStack spacing={8} alignItems={'center'}>
                         <Box>
-                            <img src={mountainSrc} className="h-16" />
+                            <img
+                                src={mountainSrc}
+                                alt="mountain"
+                                className="h-16"
+                            />
                         </Box>
                         <HStack
                             as={'nav'}
