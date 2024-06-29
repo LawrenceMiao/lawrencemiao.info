@@ -7,7 +7,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          This is lawrence react website</p><p>
+          This is lawrence react website
+        </p>
+        <p>
           IM NOT TRYING TO HACK YOU IM WAITING FOR MY SSL TO GET SIGNED
         </p>
         <a
