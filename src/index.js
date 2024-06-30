@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import NoPage from './pages/NoPage'
+import Contact from './pages/Contact'
 
 import { ChakraProvider } from '@chakra-ui/react'
 
@@ -18,7 +19,8 @@ root.render(
             <Navbar />
             <Routes>
                 <Route index element={<Home />} />
-                <Route path="/NoPage" element={<NoPage />} />
+                <Route path="/*" element={<NoPage />} />
+                <Route path="/contact" element={<Contact />} />
             </Routes>
             <Footer></Footer>
         </BrowserRouter>
