@@ -48,7 +48,7 @@ export default function SmallWithSocial() {
         spacing={4}
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}>
-        <Text>© 2024 Chakra Templates. All rights reserved</Text>
+        <Text>© 2024 Lawrence Miao. All rights reserved</Text>
         <Stack direction={'row'} spacing={6}>
           <SocialButton label={'Github'} href={'https://github.com/LawrenceMiao'}>
             <FaGithub />
