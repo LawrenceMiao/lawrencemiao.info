@@ -7,7 +7,7 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from '@chakra-ui/react'
-import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { FaLinkedin, FaGithub  } from 'react-icons/fa'
 
 const SocialButton = ({
   children,
@@ -39,8 +39,7 @@ const SocialButton = ({
 export default function SmallWithSocial() {
   return (
     <Box
-      bg={useColorModeValue('gray.50', 'gray.900')}
-      color={useColorModeValue('gray.700', 'gray.200')}>
+      className='bg-transparent'>
       <Container
         as={Stack}
         maxW={'6xl'}
@@ -51,14 +50,11 @@ export default function SmallWithSocial() {
         align={{ base: 'center', md: 'center' }}>
         <Text>© 2024 Chakra Templates. All rights reserved</Text>
         <Stack direction={'row'} spacing={6}>
-          <SocialButton label={'Twitter'} href={'#'}>
-            <FaTwitter />
+          <SocialButton label={'Github'} href={'https://github.com/LawrenceMiao'}>
+            <FaGithub />
           </SocialButton>
-          <SocialButton label={'YouTube'} href={'#'}>
-            <FaYoutube />
-          </SocialButton>
-          <SocialButton label={'Instagram'} href={'#'}>
-            <FaInstagram />
+          <SocialButton label={'Linkedin'} href={'https://linkedin.com/in/LawrenceMiao'}>
+            <FaLinkedin />
           </SocialButton>
         </Stack>
       </Container>

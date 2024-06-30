@@ -14,7 +14,7 @@ export default function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
-        <Box className={"text-white "} style={{backgroundImage: "linear-gradient(to right, #000000,#000000, #800000)"}} >
+        <Box className={"pr-3"} style={{backgroundImage: "linear-gradient(to right, #000000,#000000, #800000)"}} >
                 <Flex
                     h={16}
                     alignItems={'center'}
