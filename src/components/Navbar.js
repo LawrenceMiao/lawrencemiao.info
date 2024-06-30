@@ -11,8 +11,6 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { NavLink } from 'react-router-dom'
 import mountainSrc from './mountain.svg'
 
-const Links = ['Home', 'NoPage', 'Team']
-
 export default function Simple() {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -32,7 +30,7 @@ export default function Simple() {
                         display={{ md: 'none' }}
                         onClick={isOpen ? onClose : onOpen}
                     />
-                    <HStack spacing={8} alignItems={'center'}>
+                    <HStack spacing={4} alignItems={'center'}>
                         <Box>
                             <img
                                 src={mountainSrc}
@@ -45,11 +43,9 @@ export default function Simple() {
                             spacing={4}
                             display={{ base: 'none', md: 'flex' }}
                         >
-                            {Links.map((link) => (
-                                <NavLink key={link} to={link}>
-                                    {link}
-                                </NavLink>
-                            ))}
+                            <NavLink to={'/'}>About Me</NavLink>
+                            <NavLink to={'/resume'}>Resume</NavLink>
+                            <NavLink to={'/contact'}>Contact</NavLink>
                         </HStack>
                     </HStack>
                 </Flex>
@@ -57,9 +53,9 @@ export default function Simple() {
                 {isOpen ? (
                     <Box pb={4} display={{ md: 'none' }}>
                         <Stack as={'nav'} spacing={4}>
-                            {Links.map((link) => (
-                                <NavLink key={link}>{link}</NavLink>
-                            ))}
+                            <NavLink to={'/'}>About Me</NavLink>
+                            <NavLink to={'/resume'}>Resume</NavLink>
+                            <NavLink to={'/contact'}>Contact</NavLink>
                         </Stack>
                     </Box>
                 ) : null}
