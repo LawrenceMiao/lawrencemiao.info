@@ -4,32 +4,22 @@ import {
     HStack,
     IconButton,
     useDisclosure,
-    useColorModeValue,
     Stack,
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { NavLink } from 'react-router-dom'
 import mountainSrc from './mountain.svg'
 
-export default function Simple() {
+export default function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
-        <>
-            <Box bg={useColorModeValue('gray.100', 'gray.900')}>
+        <Box className={"text-white "} style={{backgroundImage: "linear-gradient(to right, #000000,#000000, #800000)"}} >
                 <Flex
                     h={16}
                     alignItems={'center'}
                     justifyContent={'space-between'}
                 >
-                    <IconButton
-                        className="bg-red-600"
-                        size={'md'}
-                        icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-                        aria-label={'Open Menu'}
-                        display={{ md: 'none' }}
-                        onClick={isOpen ? onClose : onOpen}
-                    />
                     <HStack spacing={4} alignItems={'center'}>
                         <Box>
                             <img
@@ -48,6 +38,14 @@ export default function Simple() {
                             <NavLink to={'/contact'}>Contact</NavLink>
                         </HStack>
                     </HStack>
+                    <IconButton
+                        className="bg-red-600"
+                        size={'md'}
+                        icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+                        aria-label={'Open Menu'}
+                        display={{ md: 'none' }}
+                        onClick={isOpen ? onClose : onOpen}
+                    />
                 </Flex>
 
                 {isOpen ? (
@@ -59,7 +57,6 @@ export default function Simple() {
                         </Stack>
                     </Box>
                 ) : null}
-            </Box>
-        </>
+        </Box>
     )
 }

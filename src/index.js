@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals'
 
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import NoPage from './pages/NoPage'
 
 import { ChakraProvider } from '@chakra-ui/react'
@@ -20,6 +21,7 @@ root.render(
                 <Route index element={<Home />} />
                 <Route path="/NoPage" element={<NoPage />} />
             </Routes>
+            <Footer></Footer>
         </BrowserRouter>
     </ChakraProvider>
 )
