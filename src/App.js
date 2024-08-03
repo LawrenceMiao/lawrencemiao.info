@@ -55,10 +55,10 @@ function App() {
         <ParallaxLayer
           offset={0}
           speed={0}
-          className='text-white bg-transparent text-center font-thin text-9xl pt-[14vw]'
+          className='text-white bg-transparent text-center font-thin pt-[13vw]'
 
         >
-          <h1>
+          <h1 style={{ fontSize: '10vw' }}>
             Lawrence Miao
           </h1>
         </ParallaxLayer>

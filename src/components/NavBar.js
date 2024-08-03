@@ -7,6 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 
 const customTheme = createTheme({
+
     palette: {
         primary: {
             main: '#dc004e', // Custom primary color
@@ -26,8 +27,24 @@ const customTheme = createTheme({
                 },
             },
         },
+        MuiTab: {
+            styleOverrides: {
+                root: {
+                    textTransform: 'none', // Prevents uppercase text
+                    // padding: '12px 16px', // Custom padding
+                    color: '#000', // Default text color
+                    textShadow: '0px 0px 8px white',
+                    fontSize: '1rem',
+                    '&.Mui-selected': {
+                        color: '#dc004e', // Color when selected
+                    },
+                },
+            },
+        },
     },
-});
+}
+
+);
 
 
 function a11yProps(index) {
