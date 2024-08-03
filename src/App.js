@@ -1,16 +1,18 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import NavBar from './components/NavBar.js';
 
 function App() {
+  const parallaxRef = useRef(null);
+
   const massless = { tension: 200, friction: 14, mass: 0.05 };
   const width = window.innerWidth;
 
-  const setDimensions = useState({
+  const [, setDimensions] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
-  })[1];
+  });
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,11 +32,13 @@ function App() {
 
   return (
     <>
-      <NavBar></NavBar>
+      <NavBar parallaxRef={parallaxRef} />
       <div style={{ height: '100vh' }}>
-        <Parallax pages={3}
+        <Parallax pages={4}
           config={massless}
-          style={{ backgroundColor: "white" }}>
+          style={{ backgroundColor: "white" }}
+          ref={parallaxRef}
+        >
           {/* First Section - Black Background */}
           <ParallaxLayer
             offset={0}
@@ -75,6 +79,7 @@ function App() {
               />
             </svg>
           </ParallaxLayer>
+          {/* Mountain */}
           <ParallaxLayer
             offset={0}
             speed={0.25}
@@ -94,19 +99,51 @@ function App() {
           </ParallaxLayer>
 
           <ParallaxLayer
-            offset={2}
+            offset={1}
             speed={1}
-            style={{ backgroundColor: 'white' }}
+            style={{ backgroundColor: 'transparent' }}
             config={massless}
+
           >
             <div style={{
               display: 'flex',
-              alignItems: 'center',
               justifyContent: 'center',
               height: '100%',
               color: 'black'
             }}>
-              <h1>Second Section</h1>
+              <h1>About</h1>
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer
+            offset={2}
+            speed={1}
+            style={{ backgroundColor: 'transparent' }}
+            config={massless}
+
+          >
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              height: '100%',
+              color: 'black'
+            }} >
+              <h1>Projects</h1>
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer
+            offset={3}
+            speed={1}
+            style={{ backgroundColor: 'transparent' }}
+            config={massless}
+
+          >
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              height: '100%',
+              color: 'black'
+            }}>
+              <h1>Work Experience</h1>
             </div>
           </ParallaxLayer>
 

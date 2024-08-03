@@ -11,11 +11,15 @@ function a11yProps(index) {
     };
 }
 
-export default function NavBar() {
+export default function NavBar(props) {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+    };
+
+    const scrollToOffset = (offset) => {
+        props.parallaxRef.current.scrollTo(offset)
     };
 
     return (
@@ -28,9 +32,12 @@ export default function NavBar() {
                             color: '#FF3C00',
                         },
                     }}>
-                    <Tab label="About" {...a11yProps(0)} />
-                    <Tab label="Work Experience" {...a11yProps(1)} />
-                    <Tab label="Projects" {...a11yProps(2)} />
+                    <Tab onClick={() => scrollToOffset(1)}
+                        label="About" {...a11yProps(0)} />
+                    <Tab onClick={() => scrollToOffset(3)}
+                        label="Work Experience" {...a11yProps(1)} />
+                    <Tab onClick={() => scrollToOffset(2)}
+                        label="Projects" {...a11yProps(2)} />
                 </Tabs>
             </Box>
         </Box>
