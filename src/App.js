@@ -1,161 +1,118 @@
 import './App.css';
-import React, { useEffect, useState, useRef } from 'react';
-import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import React, { useRef } from 'react';
 import NavBar from './components/NavBar.js';
+import { motion, useScroll, useTransform } from "framer-motion"
 
+
+function useParallax(value, distance) {
+  return useTransform(value, [0, 1], [0, distance]);
+}
 function App() {
-  const parallaxRef = useRef(null);
 
-  const massless = { tension: 200, friction: 14, mass: 0.05 };
-  const width = window.innerWidth;
-
-  const [, setDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+  const ref = useRef(null);
+  const aboutRef = useRef(null);
+  const experienceRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
   });
 
-  useEffect(() => {
-    const handleResize = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    // Add event listener
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup event listener on component unmount
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const width = window.innerWidth;
+  const nameY = useParallax(scrollYProgress, 600);
+  const y = useParallax(scrollYProgress, 400);
 
 
   return (
     <>
 
-      <div style={{ position: "sticky", zIndex: 1000 }}>
-        <NavBar parallaxRef={parallaxRef}
-        />
+      <div className='fixed top-0 w-screen' style={{
+        zIndex: 1000
+      }}>
+        <NavBar aboutRef={aboutRef}
+          experienceRef={experienceRef} />
       </div>
-      <Parallax className="top-0" pages={4}
-        config={massless}
-        style={{ backgroundColor: "white" }}
-        ref={parallaxRef}
+      <motion.h1 className="text-white absolute w-screen text-center font-thin pt-[10vw]"
+        style={{ fontSize: '10vw', y: nameY }}>
+        Lawrence Miao
+      </motion.h1>
+      <motion.svg
+        width="100vw"
+        height="75vw"
+        viewBox={`0 0 ${width} ${width}`}
+        className="absolute"
+        style={{
+          backgroundColor: "transparent",
+          y,
+          zIndex: 0
+        }}
       >
-
-        {/* First Section - Black Background */}
-        <ParallaxLayer
-          offset={0}
-          speed={0.25}
-          style={{ backgroundColor: 'black', height: "75vw" }}
-
-        >
-        </ParallaxLayer>
-        {/* Lawrence Miao */}
-        <ParallaxLayer
-          offset={0}
-          speed={0}
-          className='text-white bg-transparent text-center font-thin pt-[13vw]'
-
-        >
-          <h1 style={{ fontSize: '10vw' }}>
-            Lawrence Miao
-          </h1>
-        </ParallaxLayer>
-
-        {/* Red Sun */}
-        <ParallaxLayer
-          offset={0.5}
-          speed={1.5}
-          config={massless}
-        >
-          <svg
-            width="100vw"
-            height="75vw"
-            viewBox={`0 0 ${width} ${width}`}
-            style={{ display: 'block', backgroundColor: "transparent" }}>
-
-            <circle
-              cx="30vw"   // Center X coordinate
-              cy="40vw"   // Center Y coordinate
-              r="15vw"    // Radius
-              fill="#FF3C00" // Fill color
-            />
-          </svg>
-        </ParallaxLayer>
-        {/* Mountain */}
-        <ParallaxLayer
-          offset={0}
-          speed={0.25}
-          config={massless}
-        >
-          <svg
-            width="100vw"
-            height="75vw"
-            viewBox={`0 0 ${width} ${width * 0.75}`}
-            style={{ display: 'block', backgroundColor: "transparent" }}>
-
-            <polygon
-              points={`0,${width * 0.75} ${width / 2},${width * 0.25} ${width},${width * 0.75}`}
-              fill="white"
-            />
-          </svg>
-        </ParallaxLayer>
-
-        <ParallaxLayer
-          offset={1}
-          speed={1}
-          style={{ backgroundColor: 'transparent' }}
-          config={massless}
-
-        >
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            height: '100%',
-            color: 'black'
-          }}>
-            <h1>About</h1>
-          </div>
-        </ParallaxLayer>
-        <ParallaxLayer
-          offset={2}
-          speed={1}
-          style={{ backgroundColor: 'transparent' }}
-          config={massless}
-
-        >
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            height: '100%',
-            color: 'black'
-          }} >
-            <h1>Projects</h1>
-          </div>
-        </ParallaxLayer>
-        <ParallaxLayer
-          offset={3}
-          speed={1}
-          style={{ backgroundColor: 'transparent' }}
-          config={massless}
-
-        >
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            height: '100%',
-            color: 'black'
-          }}>
-            <h1>Work Experience</h1>
-          </div>
-        </ParallaxLayer>
-
-      </Parallax>
+        <circle
+          cx="30.8925565099vw"   // Center X coordinate
+          cy="48.2148869802vw"   // Center Y coordinate TODO
+          r="11.7851130198vw"   // Radius (100vw ^ 2 / 2) ^ 0.5 /6
+          fill="#FF3C00" // Fill color
+        />
+      </motion.svg>
+      {/* Mountain */}
+      <svg
+        width="100vw"
+        height="75vw"
+        viewBox={`0 0 ${width} ${width * 0.75}`}
+        className='bg-transparent relative'
+        style={{
+          zIndex: 100,
+        }}
+        ref={ref}
+      >
+        <polygon
+          points={`0,${width * 0.75} ${width / 2},${width * 0.25} ${width},${width * 0.75}`}
+          fill="white"
+        />
+      </svg>
 
 
-    </>
-  );
+
+      <section
+        className=' relative w-full h-screen bg-white'
+        ref={aboutRef}
+      >
+        bruh
+      </section>
+      <section
+        className=' relative w-full h-screen bg-white'
+        ref={experienceRef}
+      >
+        bruh
+      </section>
+
+
+
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        height: '100%',
+        color: 'black'
+      }}>
+        <h1>About</h1>
+      </div>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        height: '100%',
+        color: 'black'
+      }} >
+        <h1>Projects</h1>
+      </div>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        height: '100%',
+        color: 'black'
+      }}>
+        <h1>Work Experience</h1>
+      </div>
+    </>)
 }
+
 
 export default App;

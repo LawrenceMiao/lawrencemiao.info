@@ -3,7 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+
 
 
 const customTheme = createTheme({
@@ -61,13 +61,14 @@ export default function NavBar(props) {
         setValue(newValue);
     };
 
-    const scrollToOffset = (offset) => {
-        props.parallaxRef.current.scrollTo(offset)
+    const scrollToRef = (ref) => {
+        ref.current.scrollIntoView({
+            behavior: 'smooth', // optional: smooth scrolling
+        });
     };
 
     return (
         <ThemeProvider theme={customTheme}>
-            <CssBaseline />
             {/* <Box sx={{ width: '100%' }}> */}
             <Box sx={{
                 width: '100%', borderBottom: 2,
@@ -78,14 +79,14 @@ export default function NavBar(props) {
                 <Tabs sx={{ width: '100%' }} value={value} onChange={handleChange}
                     aria-label="basic tabs example"
                 >
-                    <Tab onClick={() => scrollToOffset(1)}
+                    <Tab onClick={() => scrollToRef(props.aboutRef)}
                         label="About" {...a11yProps(0)} />
-                    <Tab onClick={() => scrollToOffset(3)}
+                    <Tab onClick={() => scrollToRef(props.experienceRef)}
                         label="Work Experience" {...a11yProps(1)} />
-                    <Tab onClick={() => scrollToOffset(2)}
+                    {/* <Tab onClick={() => scrollToOffset(2)}
                         label="Projects" {...a11yProps(2)} />
                     <Tab onClick={() => scrollToOffset(2)}
-                        label="Contact" {...a11yProps(2)} />
+                        label="Contact" {...a11yProps(2)} /> */}
                 </Tabs>
             </Box>
             {/* </Box> */}
